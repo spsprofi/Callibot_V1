@@ -1,5 +1,4 @@
-input.onButtonEvent(Button.A, input.buttonEventClick(), function on_button_a() {
-    
+input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Start = 0
     basic.setLedColor(0xff0000)
     Programm = Programm + 1
@@ -8,17 +7,14 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function on_button_a() {
     if (Programm > 4) {
         Programm = 1
     }
-    
     AnzeigeProgramm()
 })
-//  Stossstange
-function Programm1() {
-    
+// Stossstange
+function Programm1 () {
     if (SchrittnummerGlobal == 1) {
         if (Start == 1) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 10) {
         if (calliBot2.readBumperSensor(C2Sensor.rechts, C2State.an) && calliBot2.readBumperSensor(C2Sensor.links, C2State.an)) {
             SchrittnummerGlobal = 20
@@ -30,7 +26,6 @@ function Programm1() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, Geschwindigkeit)
             calliBot2.setLed(C2Motor.beide, false)
         }
-        
     } else if (SchrittnummerGlobal == 20) {
         calliBot2.setLed(C2Motor.beide, true)
         calliBot2.motor(C2Motor.beide, C2Dir.rueckwaerts, Geschwindigkeit)
@@ -45,13 +40,11 @@ function Programm1() {
             StartZeitPause = ZeitAktuell
             SchrittnummerGlobal = 22
         }
-        
     } else if (SchrittnummerGlobal == 22) {
         if (IstZeitPause >= ZeitPause) {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 30) {
         calliBot2.setLed(C2Motor.links, false)
         calliBot2.setLed(C2Motor.rechts, true)
@@ -65,7 +58,6 @@ function Programm1() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 40) {
         calliBot2.setLed(C2Motor.rechts, false)
         calliBot2.setLed(C2Motor.links, true)
@@ -79,16 +71,12 @@ function Programm1() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else {
         Start = 0
         SchrittnummerGlobal = 1
     }
-    
 }
-
-input.onButtonEvent(Button.B, input.buttonEventClick(), function on_button_b() {
-    
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     if (Start == 0) {
         Start = 1
         basic.setLedColor(0x00ff00)
@@ -98,16 +86,13 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function on_button_b() {
         Start = 0
         GeschwindigkeitAlt = -1
     }
-    
 })
-//  Fahren auf dunkler Linie
-function Programm4() {
-    
+// Fahren auf dunkler Linie
+function Programm4 () {
     if (SchrittnummerGlobal == 1) {
         if (Start == 1) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 10) {
         if (calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.hell) && calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.hell)) {
             SchrittnummerGlobal = 20
@@ -119,7 +104,6 @@ function Programm4() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, Geschwindigkeit)
             calliBot2.setLed(C2Motor.beide, false)
         }
-        
     } else if (SchrittnummerGlobal == 20) {
         calliBot2.setLed(C2Motor.beide, true)
         calliBot2.motor(C2Motor.links, C2Dir.vorwaerts, Geschwindigkeit)
@@ -132,16 +116,13 @@ function Programm4() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, Geschwindigkeit)
             SchrittnummerGlobal = 10
         }
-        
         if (IstZeitPause >= ZeitPause) {
             SchrittnummerGlobal = 22
             SuchZeit = SuchZeit + SuchZeit
         }
-        
         if (SuchZeit > 2000) {
             SuchZeit = 2000
         }
-        
         ZeitPause = SuchZeit
         StartZeitPause = ZeitAktuell
         calliBot2.motor(C2Motor.beide, C2Dir.rueckwaerts, 40)
@@ -151,16 +132,13 @@ function Programm4() {
             calliBot2.motor(C2Motor.rechts, C2Dir.vorwaerts, Geschwindigkeit)
             SchrittnummerGlobal = 10
         }
-        
         if (IstZeitPause >= ZeitPause) {
             SchrittnummerGlobal = 21
             SuchZeit = SuchZeit + SuchZeit
         }
-        
         if (SuchZeit > 2000) {
             SuchZeit = 2000
         }
-        
         ZeitPause = SuchZeit
         StartZeitPause = ZeitAktuell
         calliBot2.motor(C2Motor.links, C2Dir.vorwaerts, Geschwindigkeit)
@@ -178,7 +156,6 @@ function Programm4() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 40) {
         calliBot2.setLed(C2Motor.rechts, false)
         calliBot2.setLed(C2Motor.links, true)
@@ -192,67 +169,58 @@ function Programm4() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else {
         Start = 0
         SchrittnummerGlobal = 1
     }
-    
 }
-
-input.onPinTouchEvent(TouchPin.P0, input.buttonEventDown(), function on_pin_touch_p0() {
-    
+input.onPinTouchEvent(TouchPin.P0, input.buttonEventDown(), function () {
     Geschwindigkeit = Geschwindigkeit - 4
     if (Geschwindigkeit < 0) {
         Geschwindigkeit = 0
     }
-    
 })
-function AnzeigeProgramm() {
+function AnzeigeProgramm () {
     if (Programm == 1) {
         basic.showLeds(`
             # . . . .
-                        . . . . .
-                        . # # # .
-                        # # # # #
-                        # # . # #
-        `)
+            . . . . .
+            . # # # .
+            # # # # #
+            # # . # #
+            `)
     } else if (Programm == 2) {
         basic.showLeds(`
             # # . . .
-                        . . . . .
-                        # . . # #
-                        # . # # #
-                        # . . # #
-        `)
+            . . . . .
+            # . . # #
+            # . # # #
+            # . . # #
+            `)
     } else if (Programm == 3) {
         basic.showLeds(`
             # # # . .
-                        . . . . .
-                        . # # # .
-                        # . . . #
-                        . # # # .
-        `)
+            . . . . .
+            . # # # .
+            # . . . #
+            . # # # .
+            `)
     } else if (Programm == 4) {
         basic.showLeds(`
             # # # # .
-                        . . . . .
-                        . . # # .
-                        # # . . #
-                        . . . # .
-        `)
+            . . . . .
+            . . # # .
+            # # . . #
+            . . . # .
+            `)
     }
-    
 }
-
-//  Fahren bis dunkle Linie
-function Programm3() {
-    
+// Fahren bis dunkle Linie
+function Programm3 () {
     if (SchrittnummerGlobal == 1) {
         if (Start == 1) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 10) {
         if (calliBot2.readLineSensor(C2Sensor.rechts, C2SensorStatus.dunkel) && calliBot2.readLineSensor(C2Sensor.links, C2SensorStatus.dunkel)) {
             SchrittnummerGlobal = 20
@@ -264,7 +232,6 @@ function Programm3() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, Geschwindigkeit)
             calliBot2.setLed(C2Motor.beide, false)
         }
-        
     } else if (SchrittnummerGlobal == 20) {
         calliBot2.setLed(C2Motor.beide, true)
         calliBot2.motor(C2Motor.beide, C2Dir.rueckwaerts, Geschwindigkeit)
@@ -279,13 +246,11 @@ function Programm3() {
             StartZeitPause = ZeitAktuell
             SchrittnummerGlobal = 22
         }
-        
     } else if (SchrittnummerGlobal == 22) {
         if (IstZeitPause >= ZeitPause) {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 30) {
         calliBot2.setLed(C2Motor.links, false)
         calliBot2.setLed(C2Motor.rechts, true)
@@ -299,7 +264,6 @@ function Programm3() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 40) {
         calliBot2.setLed(C2Motor.rechts, false)
         calliBot2.setLed(C2Motor.links, true)
@@ -313,16 +277,12 @@ function Programm3() {
             calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
             SchrittnummerGlobal = 10
         }
-        
     } else {
         Start = 0
         SchrittnummerGlobal = 1
     }
-    
 }
-
-function LEDAnsteuerung() {
-    
+function LEDAnsteuerung () {
     if (Start == 1) {
         if (SchrittNummerLED == 1) {
             SchrittNummerLED = 2
@@ -336,7 +296,6 @@ function LEDAnsteuerung() {
                 calliBot2.setRgbLed(C2RgbLed.LV, 0, 0, 0)
                 calliBot2.setRgbLed(C2RgbLed.RV, BelRot, BelGruen, BelBlau)
             }
-            
         } else if (SchrittNummerLED == 3) {
             if (BelDauer >= BelWechsel) {
                 SchrittNummerLED = 4
@@ -344,7 +303,6 @@ function LEDAnsteuerung() {
                 calliBot2.setRgbLed(C2RgbLed.RV, 0, 0, 0)
                 calliBot2.setRgbLed(C2RgbLed.RH, BelRot, BelGruen, BelBlau)
             }
-            
         } else if (SchrittNummerLED == 4) {
             if (BelDauer >= BelWechsel) {
                 SchrittNummerLED = 5
@@ -352,7 +310,6 @@ function LEDAnsteuerung() {
                 calliBot2.setRgbLed(C2RgbLed.RH, 0, 0, 0)
                 calliBot2.setRgbLed(C2RgbLed.LH, BelRot, BelGruen, BelBlau)
             }
-            
         } else if (SchrittNummerLED == 5) {
             if (BelDauer >= BelWechsel) {
                 SchrittNummerLED = 1
@@ -370,13 +327,10 @@ function LEDAnsteuerung() {
                     BelGruen = 0
                     BelRot = 16
                 }
-                
             }
-            
         } else {
             calliBot2.setRgbLed(C2RgbLed.All, 0, 0, 0)
         }
-        
     } else {
         BelBlau = 0
         BelGruen = 0
@@ -391,228 +345,222 @@ function LEDAnsteuerung() {
             if (Geschwindigkeit > 96) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    `)
             } else if (Geschwindigkeit > 92) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # # .
+                    `)
             } else if (Geschwindigkeit > 88) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # # . .
+                    `)
             } else if (Geschwindigkeit > 84) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # # . . .
+                    `)
             } else if (Geschwindigkeit > 80) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    # . . . .
+                    `)
             } else if (Geschwindigkeit > 76) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # #
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 72) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # # .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # # .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 68) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # # . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # # . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 64) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # # . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # # . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 60) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        # . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    # . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 56) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # #
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 52) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # # .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # # .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 48) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # # . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # # . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 44) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # # . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # # . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 40) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        # . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    # . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 36) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # #
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # #
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 32) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # # .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # # .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 28) {
                 basic.showLeds(`
                     # # # # #
-                                        # # # . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # # . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 24) {
                 basic.showLeds(`
                     # # # # #
-                                        # # . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # # . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 20) {
                 basic.showLeds(`
                     # # # # #
-                                        # . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    # . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 16) {
                 basic.showLeds(`
                     # # # # #
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 12) {
                 basic.showLeds(`
                     # # # # .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 8) {
                 basic.showLeds(`
                     # # # . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 4) {
                 basic.showLeds(`
                     # # . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else if (Geschwindigkeit > 0) {
                 basic.showLeds(`
                     # . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             } else {
                 basic.showLeds(`
                     . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                                        . . . . .
-                `)
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    `)
             }
-            
         }
-        
     }
-    
 }
-
-//  Ultraschall
-function Programm2() {
-    
+// Ultraschall
+function Programm2 () {
     if (SchrittnummerGlobal == 1) {
         if (Start == 1) {
             SchrittnummerGlobal = 10
             GeschwindigkeitUS = 40
         }
-        
     } else if (SchrittnummerGlobal == 10) {
         if (Entfernung < 5) {
             SchrittnummerGlobal = 50
@@ -629,13 +577,11 @@ function Programm2() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, GeschwindigkeitUS)
             calliBot2.setLed(C2Motor.beide, true)
         }
-        
     } else if (SchrittnummerGlobal == 20) {
         GeschwindigkeitUS = GeschwindigkeitUS - 4
         if (GeschwindigkeitUS < 40) {
             GeschwindigkeitUS = 40
         }
-        
         calliBot2.setLed(C2Motor.links, false)
         calliBot2.setLed(C2Motor.rechts, true)
         calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, GeschwindigkeitUS)
@@ -646,13 +592,11 @@ function Programm2() {
         if (IstZeitPause >= ZeitPause) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 30) {
         GeschwindigkeitUS = GeschwindigkeitUS + 4
         if (GeschwindigkeitUS > 100) {
             GeschwindigkeitUS = 100
         }
-        
         calliBot2.setLed(C2Motor.links, true)
         calliBot2.setLed(C2Motor.rechts, false)
         calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, GeschwindigkeitUS)
@@ -663,7 +607,6 @@ function Programm2() {
         if (IstZeitPause >= ZeitPause) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 40) {
         calliBot2.setLed(C2Motor.beide, false)
         calliBot2.motor(C2Motor.links, C2Dir.vorwaerts, 40)
@@ -676,7 +619,6 @@ function Programm2() {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, GeschwindigkeitUS)
             SchrittnummerGlobal = 10
         }
-        
         if (IstZeitPause >= ZeitPause) {
             calliBot2.motor(C2Motor.links, C2Dir.rueckwaerts, 40)
             calliBot2.motor(C2Motor.rechts, C2Dir.vorwaerts, 40)
@@ -685,17 +627,14 @@ function Programm2() {
             if (SuchZeit > 2000) {
                 SuchZeit = 2000
             }
-            
             ZeitPause = SuchZeit
             StartZeitPause = ZeitAktuell
         }
-        
     } else if (SchrittnummerGlobal == 42) {
         if (Entfernung < 25) {
             calliBot2.motor(C2Motor.beide, C2Dir.vorwaerts, GeschwindigkeitUS)
             SchrittnummerGlobal = 10
         }
-        
         if (IstZeitPause >= ZeitPause) {
             calliBot2.motor(C2Motor.links, C2Dir.vorwaerts, 40)
             calliBot2.motor(C2Motor.rechts, C2Dir.rueckwaerts, 40)
@@ -704,11 +643,9 @@ function Programm2() {
             if (SuchZeit > 2000) {
                 SuchZeit = 2000
             }
-            
             ZeitPause = SuchZeit
             StartZeitPause = ZeitAktuell
         }
-        
     } else if (SchrittnummerGlobal == 50) {
         calliBot2.setLed(C2Motor.links, false)
         calliBot2.setLed(C2Motor.rechts, false)
@@ -718,7 +655,6 @@ function Programm2() {
         if (Entfernung > 8) {
             SchrittnummerGlobal = 10
         }
-        
     } else if (SchrittnummerGlobal == 60) {
         calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
         calliBot2.setLed(C2Motor.beide, false)
@@ -727,21 +663,16 @@ function Programm2() {
         if (Entfernung > 11 || Entfernung < 5) {
             SchrittnummerGlobal = 10
         }
-        
     } else {
         Start = 0
         SchrittnummerGlobal = 1
     }
-    
 }
-
-input.onPinTouchEvent(TouchPin.P3, input.buttonEventDown(), function on_pin_touch_p3() {
-    
+input.onPinTouchEvent(TouchPin.P3, input.buttonEventDown(), function () {
     Geschwindigkeit = Geschwindigkeit + 4
     if (Geschwindigkeit > 100) {
         Geschwindigkeit = 100
     }
-    
 })
 let SchrittnummerGlobalAlt = 0
 let Entf1 = 0
@@ -768,8 +699,7 @@ let Programm = 0
 let Start = 0
 let BelWechsel = 0
 BelWechsel = 100
-basic.forever(function on_forever() {
-    
+basic.forever(function () {
     ZeitAktuell = control.millis()
     BelDauer = ZeitAktuell - ZeitBelWechsel
     IstZeitPause = ZeitAktuell - StartZeitPause
@@ -785,7 +715,6 @@ basic.forever(function on_forever() {
         basic.showString("ON")
         SchrittnummerGlobal = 1
     }
-    
     if (Programm == 1) {
         Programm1()
     } else if (Programm == 2) {
@@ -802,12 +731,10 @@ basic.forever(function on_forever() {
         calliBot2.setLed(C2Motor.beide, false)
         calliBot2.motorStop(C2Motor.beide, C2Stop.Frei)
     }
-    
     SchrittNeu = 0
     if (SchrittnummerGlobal != SchrittnummerGlobalAlt) {
         SchrittNeu = 1
     }
-    
     SchrittnummerGlobalAlt = SchrittnummerGlobal
     LEDAnsteuerung()
 })

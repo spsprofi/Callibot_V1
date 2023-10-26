@@ -1,6 +1,4 @@
 
-> Diese Seite bei [https://spsprofi.github.io/callibot_v1/](https://spsprofi.github.io/callibot_v1/) öffnen
-
 ## Dieses Projekt bearbeiten ![Build status badge](https://github.com/spsprofi/callibot_v1/workflows/MakeCode/badge.svg)
 
 Um dieses Repository in MakeCode zu bearbeiten.
