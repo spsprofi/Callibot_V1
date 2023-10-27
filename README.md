@@ -1,11 +1,17 @@
 Hier noch eine Kurzanleitung:
 
 Calliope Taster rot: Start / Stop
+
 Calliope Taster Balu: Auswahl Programm 1-4 (man sieht es an den Punkten oben bei den LEDs, darunter ein Symbol für das Programm), beim Umschalten auch Stopp
+
 1: Stosstange
+
 2: Ultraschallsensor (je nach Entfernung (von nah nach fern): Rückwärts Stop, langsamer, Geschwindigkeit halten, schneller, suchen wohin)
+
 3: Liniensensoren, fahren bis Linie erkannt (ähnliches Verhalten wie Stoßstange)
+
 4: Liniensensoren. fahren auf Linie
+
 Mit den P0 und P3 Sensoren kann man die Geschwindigkeit für 1,3 und 4 einstellen (in 4er Schritten, signalisiert über die LEDs)
 
 Programme 3 und 4 sind noch nicht fertig! Da muss ich noch mal drüber schauen!
